@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import CompanySignup from "../component/CompanySignup";
+import UserSignup from "../component/UserSignup";
 import {
     Container,
     Menu,
@@ -26,9 +27,8 @@ export default class SignUpPage extends Component{
                 </Menu>
                 <div>
                     {((companyType) => {
-                        if (companyType === "company") {
-                            return(<CompanySignup/>);
-                        } 
+                        if (companyType === "company") return <CompanySignup/>
+                        else return <UserSignup/>
                     })(this.state.companyType)}
                 </div>
             </Container>
