@@ -16,6 +16,10 @@ export default class Login extends Component{
     handleChange(e){
         this.setState({[e.target.name]: e.target.value});
     }
+
+    handleSubmit(e){
+        
+    }
     
     render(){
         return(
