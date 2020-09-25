@@ -1,0 +1,18 @@
+{
+  "name": "Aiden",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SaintTan/Aiden.git",
+  "author": "SaintTan <tanhwaisaint@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.13.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
