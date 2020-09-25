@@ -41,4 +41,12 @@ public class ClientGUI {
             }
         });
     }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("App");
+        frame.setContentPane(new ClientGUI().panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 }
