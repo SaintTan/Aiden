@@ -7,8 +7,15 @@ import Dialog from "@material-ui/core/Dialog";
 import { PrimButton} from '../../component/theme';
 import {
     Box,
-    Container
+    Container,
+    DialogContent,
+    Grid
 } from "@material-ui/core";
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker
+} from '@material-ui/pickers';
 
 export default class EmpPage extends Component{
     constructor(props){
@@ -16,9 +23,11 @@ export default class EmpPage extends Component{
         this.state={
             userID: localStorage.getItem("userID"),
             dialogIsOpen: false,
+            dialogIsOpenI: true,
             issue: "",
             searchID: "",
             search: "",
+            selectedDate: new Date('2014-08-18T21:11:54'),
             displaySearch: false
         }
         this.handleDialogClose = this.handleDialogClose.bind(this)
@@ -26,9 +35,15 @@ export default class EmpPage extends Component{
         this.handleListItemClick = this.handleListItemClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleSearch = this.handleSearch.bind(this)
+        this.setDate = this.setDate.bind(this);
     }
     handleDialogClose(e){
         this.setState({dialogIsOpen: false});
+        this.setState({dialogIsOpenI: true});
+    }
+
+    handleDialogCloseI(e){
+        this.setState({dialogIsOpenI:false});
     }
 
     handleDialogOpen(e){
@@ -49,6 +64,13 @@ export default class EmpPage extends Component{
         this.setState({result: "OK"})
         this.setState({displaySearch:true})
     }
+    setDate(e, input){
+        this.setState({selectedDate : input})
+    }
+
+    handleReportSubmit(e){
+        this.handleDialogCloseI(e);
+    }
 
     render(){
         return(
@@ -66,7 +88,32 @@ export default class EmpPage extends Component{
                         <ListItem button onClick={this.handleListItemClick} key="STI">
                             STI
                         </ListItem>
+                        <ListItem button onClick={this.handleListItemClick} key="STI">
+                            AIDS
+                        </ListItem>
                     </List>
+                </Dialog>
+                <Dialog open={this.state.dialogIsOpenI} onClose={this.handleDialogCloseI}>
+                    <DialogContent>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <Grid container justify="space-around">
+                                    <KeyboardDatePicker
+                                    margin="normal"
+                                    id="date-picker-dialog"
+                                    label="Date picker dialog"
+                                    format="MM/dd/yyyy"
+                                    value={this.state.selectedDate}
+                                    onChange={this.setDate}
+                                    KeyboardButtonProps={{
+                                        'aria-label': 'change date',
+                                    }}
+                                    />
+                                </Grid>
+                            </MuiPickersUtilsProvider>
+                        <PrimButton onClick={this.handleReportSubmit} color="primary">
+                            Submit Report
+                        </PrimButton>
+                    </DialogContent>
                 </Dialog>
             </Container>
         )
