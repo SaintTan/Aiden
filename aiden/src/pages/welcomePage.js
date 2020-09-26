@@ -1,4 +1,7 @@
 import React, {Component} from "react";
+import {
+    Container
+} from "@material-ui/core";
 
 export default class WelcomePage extends Component{
     constructor(props){
@@ -9,9 +12,10 @@ export default class WelcomePage extends Component{
     }
     render(){
         return(
-            <dev style={styles.pageStyle}>
-                <label> Aiden.</label>
-            </dev>
+            <Container style={styles.pageStyle}>
+                Aiden.
+            </Container>
+            
         )
     }
 }
@@ -22,12 +26,15 @@ const styles={
         alignItems: "center",
         justifyContent: "space-around",
         textAlign: "center",
-        width: window.innerWidth,
+        width: "100%",
         height: window.innerHeight,
         overflow: "hidden",
         color: "Grey",
         fontFamily: "avenir",
-        fontSize: "3em"
+        fontSize: "3em",
+        backgroundImage: `url(${"../media/background.jpg"})`,
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
     }
  
 }

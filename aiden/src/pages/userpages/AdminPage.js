@@ -24,6 +24,7 @@ export default class AdminPage extends Component{
         super(props)
         this.state={
             totalNumEmp : "",
+            userID: localStorage.getItem("userID"),
             totalNumCus : "",
             EmpInfected : [],
             EmpNotified : [],
@@ -67,9 +68,6 @@ export default class AdminPage extends Component{
 
     handleScan = data => {
         if (data) {
-          this.setState({
-            result: data
-          })
         }
     }
 
