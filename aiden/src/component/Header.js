@@ -17,7 +17,7 @@ export default class Header extends Component{
             <div style={styles.root}>
                 <AppBar style={styles.navBar}>
                     <Toolbar>
-                        <Link href="/">
+                        <Link style={styles.logo} href="/">
                             Aiden.
                         </Link>
                         <Button style={styles.menuButton} href="/login">Login</Button>
@@ -46,5 +46,20 @@ const styles ={
           textTransform: 'uppercase',
           letterSpacing: 2,
           fontWeight: 'bold'
+    },
+    logo: {
+        flexGrow: 1,
+        color: '#002E18',
+        fontSize: 24,
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        fontFamily: [
+            'futura',
+            'serif',
+        ],
+        letterSpacing: 2,
+        '&:hover': {
+            textDecoration: 'none',
+        },
     }
 }
