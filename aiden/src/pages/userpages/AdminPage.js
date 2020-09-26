@@ -106,7 +106,6 @@ export default class AdminPage extends Component{
 
     handleListItemClick(e, key){
         this.setState({issue: key});
-        console.log(this.state.issue);
         this.handleDialogClose(e);
     }
 
