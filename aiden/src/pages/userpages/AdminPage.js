@@ -93,6 +93,11 @@ export default class AdminPage extends Component{
                             STI
                         </ListItem>
                     </List>
+                    <List>
+                        <ListItem button onClick={this.handleListItemClick} key="STI">
+                            AIDS
+                        </ListItem>
+                    </List>
                 </Dialog>
                 <TextField name="searchID" onChange={this.handleChange}/>
                 <PrimButton onClick={this.handleSearch}>Search ID</PrimButton>
