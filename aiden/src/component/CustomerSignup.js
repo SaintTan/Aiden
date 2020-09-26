@@ -82,18 +82,19 @@ export default class UserSignup extends Component{
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                <label>Password:</label>
+                                <Grid item xs={12}>
+                                <label style={styles.textField}>Password:</label>
                                 <TextField
                                     onChange = {this.handleChange}
                                     type="text"
                                     name="CustomerPassword"
+                                    style={styles.textField}
                                     id="password"/>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                    <label>Email Address:</label>
+                                <Grid item xs={12}>
+                                    <label style={styles.textField}>Email Address:</label>
                                     <TextField
                                         onChange = {this.handleChange}
                                         type="email"
