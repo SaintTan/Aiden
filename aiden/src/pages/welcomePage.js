@@ -11,7 +11,6 @@ export default class WelcomePage extends Component{
         return(
             <dev style={styles.pageStyle}>
                 <label> Aiden.</label>
-                <label> Medical Safety</label>
             </dev>
         )
     }

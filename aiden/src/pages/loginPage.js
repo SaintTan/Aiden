@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
-import { PrimButton, TextLink } from '../component/theme';
+import { UserOutlined } from '@ant-design/icons';
+import { PrimButton, TextLink, H2 } from '../component/theme';
 import {
     TextField,
     Grid,
     Container,
-    CssBaseline
+    CssBaseline,
+    Avatar
 } from "@material-ui/core";
 
 export default class LoginPage extends Component{
@@ -30,7 +32,7 @@ export default class LoginPage extends Component{
         //ask and confirm user type
         localStorage.setItem("usertype", "admin");
         localStorage.setItem("userID", "101");
-        localStorage.setItem("loggedIn", true);
+        localStorage.setItem("loggedIn", "true");
         this.setState({redirect: "user"});
     }
 
@@ -44,18 +46,25 @@ export default class LoginPage extends Component{
         }
         else{
             return(
-                <Container component="main" maxWidth="xs" >
+                <Container component="main" maxWidth="xs" style={styles.container}>
+                    <Avatar style={styles.avatar}>
+                        <UserOutlined />
+                    </Avatar>
+                    <H2 component="h1" variant="h5">
+                        Sign in
+                    </H2>
                     <CssBaseline />
                     <div style={styles.paper}>
                         <form onSubmit = {this.handleSubmit} style={styles.formLayout}>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
+                                <Grid item xs={12}>
                                     <TextField 
                                         name="company" 
                                         type="text" 
                                         value={this.state.company} 
                                         id="company"
                                         label="company"
+                                        style={styles.textField}
                                         onChange={this.handleChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -65,6 +74,7 @@ export default class LoginPage extends Component{
                                         value={this.state.email} 
                                         id="email"
                                         label="email"
+                                        style={styles.textField}
                                         onChange={this.handleChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -74,6 +84,7 @@ export default class LoginPage extends Component{
                                     value={this.state.password}
                                     id="password" 
                                     label="password"  
+                                    style={styles.textField}
                                     onChange={this.handleChange}/>
                                 </Grid>
                                 <PrimButton
@@ -107,12 +118,20 @@ const styles={
         flexDirection: 'column',
         alignItems: 'center',
     },
+    container:{
+        marginTop: 8*15,
+        display:'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width:"100%"
+    },
     avatar: {
         marginBottom: 8,
         backgroundColor: '#99C015',
     },
     formLayout:{
         width: '100%',
+        flexDirectop:"column",
         alignItems: "center",
         marginTop: 8*3,
     },
@@ -121,7 +140,8 @@ const styles={
         marginTop: 10
     },
     textField: {
-        margin: "4px 0px 4px",
+        marginLeft: "25%",
+        marginRight: "25%"
     },
     submit:{}
 }
