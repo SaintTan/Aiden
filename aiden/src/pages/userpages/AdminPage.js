@@ -64,29 +64,31 @@ export default class AdminPage extends Component{
     }
 
     handleReportSubmit(e){
-        this.handleDialogCloseI(e);
 
         const data = {
-
+            type: "RiskNotify",
+            workerID: this.state.userID,
+            issue: this.state.issue
         };
 
         axios.post("/user", data).then(res => {
-
+            console.log(res.data);
         }).catch(err =>{
             console.log(err);
         });
 
-
         e.preventDefault();
+        this.handleDialogCloseI(e);
 
     }
 
     handleScan = data => {
 
-        console.log(data);
         if (data) {
+            console.log("data");
 
             const interactionObj = {
+                type: "Interact",
                 workerID: this.state.userID,
                 customerID: data
             }
@@ -103,7 +105,8 @@ export default class AdminPage extends Component{
     }
 
     handleListItemClick(e){
-        this.setState({issue: e.target.key});
+        this.setState({issue: 'STI'});
+        console.log(this.state.issue);
         this.handleDialogClose(e);
     }
 
@@ -149,12 +152,12 @@ export default class AdminPage extends Component{
                 </PrimButton>
                 <Dialog onClose={this.handleDialogClose} open={this.state.dialogIsOpen}>
                     <List>
-                        <ListItem button onClick={this.handleListItemClick} key="STI">
+                        <ListItem button onClick={this.handleListItemClick} name="STI">
                             STI
                         </ListItem>
                     </List>
                     <List>
-                        <ListItem button onClick={this.handleListItemClick} key="STI">
+                        <ListItem button onClick={this.handleListItemClick} name="AIDS">
                             AIDS
                         </ListItem>
                     </List>
