@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import flask
-
-app = flask.Flask(__name__)
-
-@app.route("/")
-def index():
-    return "Congrats, you've accessed the homepage!"
-
-if __name__ == "__main__":
-    app.run(debug = True)
-=======
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
 
@@ -47,7 +35,6 @@ def index():
 
 
     return jsonify({'value': 'success'})
-<<<<<<< HEAD
 
 @app.route('/login', methods = ["POST"])
 def login_check():
