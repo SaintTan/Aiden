@@ -43,7 +43,8 @@ const styles={
         justifyContent: "space-around",
         textAlign: "center",
         overflow: "hidden",
-        backgroundImage: "url('../images.background.png')",
+        backgroundImage: "url('/background.jpg')",
+        backgroundSize: "100%",
         color: "white"
     }
 }
