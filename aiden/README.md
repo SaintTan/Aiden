@@ -2,6 +2,8 @@
 ## About
 Aiden is a medical notification web application that aims to minimize spread of diseases through the use of machiene learning models. The current build of Aiden is design to tackle STD related diseases; however it can be used for other types of diseases as well.
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Features
 This section is dedicated to discribe the core features of Aiden
 
@@ -34,8 +36,6 @@ This allows processes between the customers and the service provider to be easie
 Aiden also allows both types of user to report on their current medical condition. Once a medical report has been filed, it will notify individuals that have contact with the person in question. Suspected individuals will then be tagged as "Flagged" - no service will be provided until this tag is cleared.
 
 Aiden will notify users based on a machine learning model that will be consistently improving as it collects more and more data. Additionally, Aiden is not limited to only STD - Aiden also allows different diseases along with their attributes (ie. probability of spread) to be modelled. Since the basis of Aiden has already been establish, there will just be different models of the different diseases.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Instructions for running Aiden (frontend):
 
