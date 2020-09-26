@@ -35,6 +35,7 @@ export default class WorkerSignup extends Component{
         };
         axios.post("/signup", data).then(res => {
             console.log("Worker data submitted to secure database!");
+            this.setState({redirect:"login"});
 
         }).catch(err => {
             console.log(err);

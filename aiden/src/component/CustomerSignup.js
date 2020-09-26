@@ -34,6 +34,7 @@ export default class UserSignup extends Component{
 
         axios.post("/signup", data).then(res => {
             console.log("Customer data submitted to secure database!");
+            this.setState({redirect: "login"});
 
         }).catch(err => {
             console.log(err);
@@ -49,53 +50,57 @@ export default class UserSignup extends Component{
     }
 
     render(){
-        return(
-            <Container component="main" maxWidth="xs" >
-                <CssBaseline />
-                <div style={styles.paper}>
-                    <form style={styles.formLayout}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                            <label>Passport Number:</label>
-                            <TextField
-                                onChange = {this.handleChange}
-                                type="text"
-                                name="CustomerPassport"
-                                id="passport"/>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Customer Full Name:</label>
+        if(this.state.redirect){
+            return <Redirect to= {this.state.redirect}/>
+        }
+        else{
+            return(
+                <Container component="main" maxWidth="xs" >
+                    <CssBaseline />
+                    <div style={styles.paper}>
+                        <form style={styles.formLayout}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                <label>Passport Number:</label>
                                 <TextField
                                     onChange = {this.handleChange}
                                     type="text"
-                                    name="CustomerName"
-                                    id="name"/>
+                                    name="CustomerPassport"
+                                    id="passport"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Email Address:</label>
-                                <TextField
-                                    onChange = {this.handleChange}
-                                    type="email"
-                                    name="CustomerEmail"
-                                    id="email"/>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <label>Customer Full Name:</label>
+                                    <TextField
+                                        onChange = {this.handleChange}
+                                        type="text"
+                                        name="CustomerName"
+                                        id="name"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <PrimButton
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            style={styles.submit}
-                            onClick = {this.handleSubmit}>
-                            Sign Up
-                        </PrimButton>
-                    </form>
-                </div>
-            </Container>
-        )
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <label>Email Address:</label>
+                                    <TextField
+                                        onChange = {this.handleChange}
+                                        type="email"
+                                        name="CustomerEmail"
+                                        id="email"/>
+                                </Grid>
+                            </Grid>
+                            <PrimButton
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                style={styles.submit}
+                                onClick = {this.handleSubmit}>
+                                Sign Up
+                            </PrimButton>
+                        </form>
+                    </div>
+                </Container>
+        }
     }
 }
 const styles={
