@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
-import { PrimButton, H2} from './theme';
+import { PrimButton} from './theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {
     TextField,
