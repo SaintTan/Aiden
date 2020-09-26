@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Text} from "react-native";
 
 export default class AdminPage extends Component{
     constructor(props){
@@ -14,9 +13,9 @@ export default class AdminPage extends Component{
     render(){
         return(
             <div>
-                <Text>Managing # Employee: </Text>
-                <Text>Total infected: </Text>
-                <Text>Total notified: </Text>
+                <label>Managing # Employee: </label>
+                <label>Total infected: </label>
+                <label>Total notified: </label>
             </div>
             
         )

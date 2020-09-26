@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "./css/header.css"
 import {
     AppBar,
     Toolbar,
@@ -14,21 +15,37 @@ export default class Header extends Component{
     }
     render(){
         return(
-            <AppBar>
-                <Toolbar>
-                    <Link href="/">
-                        Aiden.
-                    </Link>
-                    <Button href="/login">Login</Button>
-                    <Button href="/signup">Sign up</Button>
-                </Toolbar>
-            </AppBar>
+            <div style={styles.root}>
+                <AppBar style={styles.navBar}>
+                    <Toolbar>
+                        <Link href="/">
+                            Aiden.
+                        </Link>
+                        <Button style={styles.menuButton} href="/login">Login</Button>
+                        <Button style={styles.menuButton} href="/signup">Sign up</Button>
+                    </Toolbar>
+                </AppBar>
+                <Box style={{height: '8vh'}}/>
+            </div>
         )
     }
 }
 
-export function SpaceBox(){
-    return(
-        <Box/>
-    )
+const styles ={
+    root:{
+        flexGrow: 1,
+
+    },
+    navBar: {
+        backgroundColor: '#f6f6f6',
+        position: "fixed"
+    },
+    menuButton:{
+          color: '#002E18',
+          fontFamily: ['avenir','helvetica'],
+          fontSize: 12,
+          textTransform: 'uppercase',
+          letterSpacing: 2,
+          fontWeight: 'bold'
+    }
 }
