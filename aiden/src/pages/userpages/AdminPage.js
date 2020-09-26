@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
+import QrReader from 'react-qr-reader'
 import {
     TextField,
     Grid,
@@ -13,17 +14,42 @@ export default class AdminPage extends Component{
             totalNumEmp : "",
             totalNumCus : "",
             EmpInfected : [],
-            EmpNotified : []
+            EmpNotified : [],
+            result: "",
+        }
+        this.handleScan = this.handleScan.bind(this);
+        this.handleError = this.handleError.bind(this);
+    }
+    handleScan = data => {
+        if (data) {
+          this.setState({
+            result: data
+          })
         }
     }
+
+    handleError = err => {
+        console.error(err)
+    }
+
     render(){
         return(
             <Container component="main" maxWidth="xs" >
+                <div>
+                    <QrReader
+                    delay={300}
+                    onError={this.handleError}
+                    onScan={this.handleScan}
+                    style={{ width: '100%' }}
+                    />
+                    <p>{this.state.result}</p>
+                </div>
                 <div>
                     <label>Managing # Employee: </label>
                     <label>Total infected: </label>
                     <label>Total notified: </label>
                 </div>
+
             </Container>
             
             
