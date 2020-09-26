@@ -69,14 +69,6 @@ export default class EmpPage extends Component{
                         </ListItem>
                     </List>
                 </Dialog>
-                <TextField name="searchID" onChange={this.handleChange}/>
-                <PrimButton onClick={this.handleSearch}>Search ID</PrimButton>
-                <div>
-                    {((searchVal, result)=>{
-                        if(!searchVal) return
-                        else return <Box>{result}</Box>
-                    })(this.state.displaySearch, this.state.result)}
-                </div>
             </Container>
         )
     }
