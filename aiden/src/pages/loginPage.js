@@ -4,6 +4,8 @@ import { PrimButton, H2, TextLink } from '../component/theme';
 import {
     TextField,
     Grid,
+    Container,
+    CssBaseline
 } from "@material-ui/core";
 
 export default class LoginPage extends Component{
@@ -38,56 +40,59 @@ export default class LoginPage extends Component{
         }
         else{
             return(
-                <div style={styles.paper}>
-                    <form onSubmit = {this.handleSubmit} style={styles.formLayout}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <TextField 
-                                    name="company" 
-                                    type="text" 
-                                    value={this.state.company} 
-                                    id="company"
-                                    label="company"
-                                    onChange={this.handleChange}/>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField 
-                                    name="email" 
-                                    type="email" 
-                                    value={this.state.email} 
-                                    id="email"
-                                    label="email"
-                                    onChange={this.handleChange}/>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                name="password" 
-                                type="password" 
-                                value={this.state.password}
-                                id="password" 
-                                label="password"  
-                                onChange={this.handleChange}/>
-                            </Grid>
-                            <PrimButton
-                                type="submit"
-                                fullWidth
-                                variant="contained"
-                                style={styles.submit}>
-                                Login
-                            </PrimButton>
-
-                            <Grid container justify="flex-end">
-                                <Grid item>
-                                    <TextLink href="/signup">
-                                        Don't have an account? Sign up Here!
-                                    </TextLink>
+                <Container component="main" maxWidth="xs" >
+                    <CssBaseline />
+                    <div style={styles.paper}>
+                        <form onSubmit = {this.handleSubmit} style={styles.formLayout}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField 
+                                        name="company" 
+                                        type="text" 
+                                        value={this.state.company} 
+                                        id="company"
+                                        label="company"
+                                        onChange={this.handleChange}/>
                                 </Grid>
+                                <Grid item xs={12}>
+                                    <TextField 
+                                        name="email" 
+                                        type="email" 
+                                        value={this.state.email} 
+                                        id="email"
+                                        label="email"
+                                        onChange={this.handleChange}/>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                    name="password" 
+                                    type="password" 
+                                    value={this.state.password}
+                                    id="password" 
+                                    label="password"  
+                                    onChange={this.handleChange}/>
+                                </Grid>
+                                <PrimButton
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    style={styles.submit}>
+                                    Login
+                                </PrimButton>
+
+                                <Grid container justify="flex-end">
+                                    <Grid item>
+                                        <TextLink href="/signup">
+                                            Don't have an account? Sign up Here!
+                                        </TextLink>
+                                    </Grid>
+                                </Grid>
+                                
+                                
                             </Grid>
-                            
-                            
-                        </Grid>
-                    </form>
-                </div>
+                        </form>
+                    </div>
+                </Container>
             );
         }
     }
