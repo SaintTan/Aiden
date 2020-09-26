@@ -190,7 +190,8 @@ const styles={
         marginTop: 10
     },
     textField: {
-        margin: "4px 0px 4px",
+        marginLeft: "50%",
+        marginRight: "50%"
     },
     submit:{
 

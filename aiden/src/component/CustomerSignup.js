@@ -16,6 +16,7 @@ export default class UserSignup extends Component{
             CustomerName : "",
             CustomerEmail : "",
             CustomerPassport : "",
+            CustomerPassword: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -27,7 +28,8 @@ export default class UserSignup extends Component{
             type: "Customer",
             name: this.state.CustomerName,
             passport: this.state.CustomerPassport,
-            email: this.state.CustomerEmail
+            email: this.state.CustomerEmail,
+            password: this.state.CustomerPassword
         };
 
         axios.post("/signup", data).then(res => {
@@ -75,6 +77,16 @@ export default class UserSignup extends Component{
                                         type="text"
                                         name="CustomerName"
                                         id="name"/>
+                                </Grid>
+                            </Grid>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                <label>Password:</label>
+                                <TextField
+                                    onChange = {this.handleChange}
+                                    type="text"
+                                    name="CustomerPassword"
+                                    id="password"/>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
