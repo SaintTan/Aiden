@@ -53,37 +53,40 @@ export default class UserSignup extends Component{
         }
         else{
             return(
-                <Container component="main" maxWidth="xs" >
+                <Container component="main" maxWidth="xs" style={styles.container}>
                     <CssBaseline />
                     <div style={styles.paper}>
                         <form style={styles.formLayout}>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                <label>Passport Number:</label>
+                            <Grid container spacing={4}>
+                                <Grid item xs={12}>
+                                <label style={styles.textField}>Passport Number:</label>
                                 <TextField
                                     onChange = {this.handleChange}
                                     type="text"
                                     name="CustomerPassport"
+                                    style={styles.textField}
                                     id="passport"/>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                    <label>Customer Full Name:</label>
+                                <Grid item xs={12}>
+                                    <label style={styles.textField}>Customer Full Name:</label>
                                     <TextField
                                         onChange = {this.handleChange}
                                         type="text"
                                         name="CustomerName"
+                                        style={styles.textField}
                                         id="name"/>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                    <label>Email Address:</label>
+                                <Grid item xs={12}>
+                                    <label style={styles.textField}>Email Address:</label>
                                     <TextField
                                         onChange = {this.handleChange}
                                         type="email"
                                         name="CustomerEmail"
+                                        style={styles.textField}
                                         id="email"/>
                                 </Grid>
                             </Grid>
@@ -109,6 +112,13 @@ const styles={
         flexDirection: 'column',
         alignItems: 'center',
     },
+    container:{
+        marginTop: 8*5,
+        display:'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width:"100%"
+    },
     avatar: {
         marginBottom: 8,
         backgroundColor: '#99C015',
@@ -123,9 +133,12 @@ const styles={
         marginTop: 10
     },
     textField: {
-        margin: "4px 0px 4px",
+        marginLeft: "25%",
+        marginRight: "25%"
     },
     submit:{
-
+        marginTop:"30%",
+        marginLeft: "auto",
+        marginRight: "auto"
     }
 }

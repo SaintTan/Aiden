@@ -73,7 +73,7 @@ const styles={
     },
     form: {
       width: '100%',
-      marginTop: 8*3
+      marginTop: 8*15
     },
     formLabel: {
     marginBottom: 8,
