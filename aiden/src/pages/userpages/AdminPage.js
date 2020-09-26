@@ -34,7 +34,8 @@ export default class AdminPage extends Component{
             dialogIsOpenI: false,
             issue: "",
             selectedDate: new Date('2014-08-18T21:11:54'),
-            displaySearch: false
+            displaySearch: false,
+            reloadPage:false
         }
         this.handleDialogClose = this.handleDialogClose.bind(this);
         this.handleDialogCloseI =  this.handleDialogCloseI.bind(this);
@@ -46,6 +47,9 @@ export default class AdminPage extends Component{
         this.handleSearch = this.handleSearch.bind(this);
         this.handleReportSubmit = this.handleReportSubmit.bind(this);
         this.setDate = this.setDate.bind(this);
+        if(!this.state.reloadPage){
+            this.setState({reloadPage:true});
+        }
     }
 
     handleDialogClose(e){
@@ -92,8 +96,8 @@ export default class AdminPage extends Component{
         this.setState({displaySearch:true})
     }
 
-    setDate(e){
-        this.setState({selectedDate : e.target.value})
+    setDate(e, input){
+        this.setState({selectedDate : input})
     }
 
     render(){
