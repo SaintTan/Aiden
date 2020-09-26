@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import {Redirect} from "react-router-dom"
+import {Redirect} from "react-router-dom";
+import { PrimButton, H2, TextLink } from '../component/theme';
 import {
     TextField,
-    Grid
+    Grid,
 } from "@material-ui/core";
 
 export default class LoginPage extends Component{
@@ -67,11 +68,23 @@ export default class LoginPage extends Component{
                                 label="password"  
                                 onChange={this.handleChange}/>
                             </Grid>
+                            <PrimButton
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                style={styles.submit}>
+                                Login
+                            </PrimButton>
+
+                            <Grid container justify="flex-end">
+                                <Grid item>
+                                    <TextLink href="/signup">
+                                        Don't have an account? Sign up Here!
+                                    </TextLink>
+                                </Grid>
+                            </Grid>
                             
-                            <div>
-                                <button style={styles.button} name="" onClick={this.handleSignup}>SignUp</button>
-                                <button style={styles.button} name="signup" onClick={this.handleSignup}>SignUp</button>
-                            </div>
+                            
                         </Grid>
                     </form>
                 </div>
@@ -93,7 +106,8 @@ const styles={
     },
     formLayout:{
         width: '100%',
-      marginTop: 8*3,
+        alignItems: "center",
+        marginTop: 8*3,
     },
     laybelStyle:{
         display:"flex",
@@ -102,22 +116,7 @@ const styles={
     textField: {
         margin: "4px 0px 4px",
     },
-    button:{
-        background: 'transparent',
-        border: '2px solid',
-        borderColor:'#99C015',
-        borderRadius: 3,
-        color: '#99C015',
-        height: 48,
-        padding: '0 30px',
-        fontFamily: ['avenir','roboto'],
-        margin: "16px 32px 16px 32px",
-        letterSpacing: 3,
-        fontSize:18,
-        fontWeight: 'bold',
-        '&:hover': {
-            background: "#638709",
-            color: '#fff',
-        }
+    submit:{
+
     }
 }

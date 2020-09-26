@@ -71,8 +71,10 @@ const styles={
     },
     form: {
       width: '100%',
+      marginTop: 8*3
     },
     formLabel: {
+    marginBottom: 8,
       fontWeight:'bold',
       textAlign: 'center',
     },
