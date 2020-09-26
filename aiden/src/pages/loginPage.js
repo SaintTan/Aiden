@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
 import { PrimButton, TextLink } from '../component/theme';
+import axios from 'axios';
 import {
     TextField,
     Grid,
@@ -12,7 +13,6 @@ export default class LoginPage extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            company: '',
             email: '',
             password: '',
         };
@@ -31,7 +31,21 @@ export default class LoginPage extends Component{
         localStorage.setItem("usertype", "admin");
         localStorage.setItem("userID", "101");
         localStorage.setItem("loggedIn", true);
-        this.setState({redirect: "user"});
+
+        const data = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        axios.post("/login", data).then(res => {
+            console.log(res.data);
+
+        }).catch(err => {
+            console.log(err);
+        });
+
+        e.preventDefault();
+
+        //this.setState({redirect: "user"});
     }
 
     handleSignup(e){
@@ -49,15 +63,6 @@ export default class LoginPage extends Component{
                     <div style={styles.paper}>
                         <form onSubmit = {this.handleSubmit} style={styles.formLayout}>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                    <TextField 
-                                        name="company" 
-                                        type="text" 
-                                        value={this.state.company} 
-                                        id="company"
-                                        label="company"
-                                        onChange={this.handleChange}/>
-                                </Grid>
                                 <Grid item xs={12}>
                                     <TextField 
                                         name="email" 
