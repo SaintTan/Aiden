@@ -13,9 +13,13 @@ export default class UserSignup extends Component{
     render(){
         return(
             <form>
+                <label>Company Name:</label>
                 <input type="text"></input>
-                <input type="text"></input>
+                <label>Company Email:</label>
                 <input type="email"></input>
+                <label>Passport Number:</label>
+                <input type="text"></input>
+                <label>Password:</label>
                 <input type="password"></input>
             </form>
         )

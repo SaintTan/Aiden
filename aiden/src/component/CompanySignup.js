@@ -13,9 +13,13 @@ export default class CompanySignup extends Component{
     render(){
         return(
             <form>
+                <label>Company Name:</label>
                 <input type="text"></input>
+                <label>Company Address:</label>
                 <input type="text"></input>
+                <label>Company Email:</label>
                 <input type="email"></input>
+                <label>Password:</label>
                 <input type="password"></input>
             </form>
         )

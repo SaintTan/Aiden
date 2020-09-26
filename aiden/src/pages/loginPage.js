@@ -33,26 +33,49 @@ export default class LoginPage extends Component{
         }
         else{
             return(
-                <div>
-                    <form onSubmit = {this.handleSubmit}>
-                        <label>
+                <div style={styles.pageLayout}>
+                    <form onSubmit = {this.handleSubmit} style={styles.formLayout}>
+                        <label style={styles.laybelStyle}>
                             Company:
                             <input name="company" type="text" value={this.state.company} onChange={this.handleChange}/>
                         </label>
-                        <label>
+                        <label style={styles.laybelStyle}>
                             Email:
                             <input name="email" type="email" value={this.state.email} onChange={this.handleChange}/>
                         </label>
-                        <label>
+                        <label style={styles.laybelStyle}>
                             Password:
                             <input name="password" type="password" value={this.state.password} onChange={this.handleChange}/>
                         </label>
+                        <div style={styles.laybelStyle}>
+                            <button name="signup" onClick={this.handleSignup}>SignUp</button>
+                        </div>
                     </form>
-                    <div>
-                        <button name="signup" onClick={this.handleSignup}>SignUp</button>
-                    </div>
+                   
                 </div>
             );
         }
+    }
+}
+
+const styles={
+    pageLayout:{
+        verticalAlign: "baseline",
+        height: window.innerHeight,
+        display:"flex",
+        alignItems:"center",
+        flexDirection: "column",
+        width:"40%",
+        flexWrap: "wrap",
+        margin: "auto",
+    },
+    formLayout:{
+        margin: "auto",
+        flexDirection: "column",
+        alignItems:"center"
+    },
+    laybelStyle:{
+        display:"flex",
+        marginTop: 10
     }
 }
