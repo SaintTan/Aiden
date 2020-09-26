@@ -28,7 +28,7 @@ export default class LoginPage extends Component{
 
     handleSubmit(e){
         //ask and confirm user type
-        localStorage.setItem("usertype", "user");
+        localStorage.setItem("usertype", "admin");
         localStorage.setItem("userID", "101");
         localStorage.setItem("loggedIn", true);
         this.setState({redirect: "user"});
