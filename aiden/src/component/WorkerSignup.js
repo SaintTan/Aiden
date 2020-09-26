@@ -45,11 +45,13 @@ export default class WorkerSignup extends Component{
     }
 
     handleChange(e){
-        this.setState({[e.target.name]: e.target.value})
-    
+        this.setState({[e.target.name]: e.target.value});
     }
 
     render(){
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
         return(
             <Container component="main" maxWidth="xs" >
                 <CssBaseline />
@@ -99,7 +101,8 @@ export default class WorkerSignup extends Component{
                             type="submit"
                             fullWidth
                             variant="contained"
-                            style={styles.submit}>
+                            style={styles.submit}
+                            onClick = {this.handleSubmit}>
                             Sign Up
                         </PrimButton>
                     </form>

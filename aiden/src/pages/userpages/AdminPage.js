@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import {Redirect} from "react-router-dom";
 import QrReader from 'react-qr-reader'
 import {
-    TextField,
-    Grid,
     Container
 } from "@material-ui/core";
 
