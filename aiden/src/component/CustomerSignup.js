@@ -17,10 +17,8 @@ export default class UserSignup extends Component{
             CustomerEmail : "",
             CustomerPassport : "",
         }
-
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        
     }
     
     handleSubmit(e){
@@ -100,6 +98,7 @@ export default class UserSignup extends Component{
                         </form>
                     </div>
                 </Container>
+            )
         }
     }
 }

@@ -53,63 +53,65 @@ export default class WorkerSignup extends Component{
         if(this.state.redirect){
             return <Redirect to={this.state.redirect}/>
         }
-        return(
-            <Container component="main" maxWidth="xs" >
-                <CssBaseline />
-                <div style={styles.paper}>
-                    <form style={styles.formLayout}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                            <label>Passport Number:</label>
-                            <TextField
-                                onChange = {this.handleChange}
-                                type="text"
-                                name="WorkerPassport"
-                                id="passport"/>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Worker Full Name:</label>
+        else{
+            return(
+                <Container component="main" maxWidth="xs" >
+                    <CssBaseline />
+                    <div style={styles.paper}>
+                        <form style={styles.formLayout}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                <label>Passport Number:</label>
                                 <TextField
                                     onChange = {this.handleChange}
                                     type="text"
-                                    name="WorkerName"
-                                    id="name"/>
+                                    name="WorkerPassport"
+                                    id="passport"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Password:</label>
-                                <TextField
-                                    onChange = {this.handleChange}
-                                    type="text"
-                                    name="WorkerPassword"
-                                    id="password"/>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <label>Worker Full Name:</label>
+                                    <TextField
+                                        onChange = {this.handleChange}
+                                        type="text"
+                                        name="WorkerName"
+                                        id="name"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Email Address:</label>
-                                <TextField
-                                    onChange = {this.handleChange}
-                                    type="email"
-                                    name="WorkerEmail"
-                                    id="email"/>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <label>Password:</label>
+                                    <TextField
+                                        onChange = {this.handleChange}
+                                        type="text"
+                                        name="WorkerPassword"
+                                        id="password"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <PrimButton
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            style={styles.submit}
-                            onClick = {this.handleSubmit}>
-                            Sign Up
-                        </PrimButton>
-                    </form>
-                </div>
-            </Container>
-        )
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <label>Email Address:</label>
+                                    <TextField
+                                        onChange = {this.handleChange}
+                                        type="email"
+                                        name="WorkerEmail"
+                                        id="email"/>
+                                </Grid>
+                            </Grid>
+                            <PrimButton
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                style={styles.submit}
+                                onClick = {this.handleSubmit}>
+                                Sign Up
+                            </PrimButton>
+                        </form>
+                    </div>
+                </Container>
+            )
+        }
     }
 }
 
