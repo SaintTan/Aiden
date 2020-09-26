@@ -17,7 +17,7 @@ def index():
 
     if data["type"] == "Worker":
         workers.insert_one({
-            "id_": data["passport"],
+            "_id": data["passport"],
             "name": data["name"],
             "email": data["email"],
             "password": data["password"]
@@ -25,7 +25,7 @@ def index():
 
     elif data["type"] == "Customer":
         customers.insert_one({
-            "id_": data["passport"],
+            "_id": data["passport"],
             "name": data["name"],
             "email": data["email"]
         })
