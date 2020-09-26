@@ -5,6 +5,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Dialog from "@material-ui/core/Dialog";
 import { PrimButton} from '../../component/theme';
+import axios from 'axios';
 import {
     Box,
     Container,
@@ -70,6 +71,20 @@ export default class EmpPage extends Component{
 
     handleReportSubmit(e){
         this.handleDialogCloseI(e);
+
+        const data = {
+
+        };
+
+        axios.post("/user", data).then(res => {
+
+        }).catch(err =>{
+            console.log(err);
+        });
+
+
+        e.preventDefault();
+
     }
 
     render(){
