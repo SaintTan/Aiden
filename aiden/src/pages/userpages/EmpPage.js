@@ -102,12 +102,12 @@ export default class EmpPage extends Component{
                 </PrimButton>
                 <Dialog onClose={this.handleDialogClose} open={this.state.dialogIsOpen}>
                     <List>
-                        <ListItem button onClick={()=>this.handleListItemClick("STI")}>
+                        <ListItem button onClick={this.handleListItemClick("STI")}>
                             STI
                         </ListItem>
                     </List>
                     <List>
-                        <ListItem button onClick={()=>this.handleListItemClick("AIDS")}>
+                        <ListItem button onClick={this.handleListItemClick("AIDS")}>
                             AIDS
                         </ListItem>
                     </List>
