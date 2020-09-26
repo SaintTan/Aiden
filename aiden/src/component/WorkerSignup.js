@@ -1,42 +1,47 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
-import { PrimButton, H2} from './theme';
+import { PrimButton} from './theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import axios from 'axios';
 import {
     TextField,
     Grid,
     Container
 } from "@material-ui/core";
-import axios from "axios";
 
-export default class UserSignup extends Component{
+export default class WorkerSignup extends Component{
     constructor(props){
         super(props);
         this.state={
-            userName : "",
-            userEmail : "",
-            passportNum : "",
-            password : ""
+            WorkerPassport: "",
+            WorkerName : "",
+            WorkerEmail: "",
+            WorkerPassword: ""
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        
     }
-    
+
     handleSubmit(e){
-        
-        const userData = this.state;
-        axios.post("/signup", {userData}).then(res => {
-            console.log("Data submitted to db!");
-            console.log(res.data);
+
+        const data = {
+            type: "Worker",
+            name: this.state.WorkerName,
+            passport: this.state.WorkerPassport,
+            email: this.state.WorkerEmail,
+            password: this.state.WorkerPassword
+            
+        };
+        axios.post("/signup", data).then(res => {
+            console.log("Worker data submitted to secure database!");
 
         }).catch(err => {
             console.log(err);
         });
 
-        e.preventDefault();     
-
+        e.preventDefault();
+        
     }
 
     handleChange(e){
@@ -52,32 +57,22 @@ export default class UserSignup extends Component{
                     <form style={styles.formLayout}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                            <label>Full Name:</label>
+                            <label>Passport Number:</label>
                             <TextField
                                 onChange = {this.handleChange}
                                 type="text"
-                                name="userName"
-                                id="userName"/>
+                                name="WorkerPassport"
+                                id="passport"/>
                             </Grid>
                         </Grid>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                                <label>Email:</label>
-                                <TextField
-                                    onChange = {this.handleChange}
-                                    type="email"
-                                    name="userEmail"
-                                    id="email"/>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Passport Number:</label>
+                                <label>Worker Full Name:</label>
                                 <TextField
                                     onChange = {this.handleChange}
                                     type="text"
-                                    name="passportNum"
-                                    id="passport"/>
+                                    name="WorkerName"
+                                    id="name"/>
                             </Grid>
                         </Grid>
                         <Grid container spacing={2}>
@@ -85,17 +80,26 @@ export default class UserSignup extends Component{
                                 <label>Password:</label>
                                 <TextField
                                     onChange = {this.handleChange}
-                                    type="password"
-                                    name="password"
+                                    type="text"
+                                    name="WorkerPassword"
                                     id="password"/>
+                            </Grid>
+                        </Grid>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <label>Email Address:</label>
+                                <TextField
+                                    onChange = {this.handleChange}
+                                    type="email"
+                                    name="WorkerEmail"
+                                    id="email"/>
                             </Grid>
                         </Grid>
                         <PrimButton
                             type="submit"
                             fullWidth
                             variant="contained"
-                            style={styles.submit}
-                            onClick = {this.handleSubmit}>
+                            style={styles.submit}>
                             Sign Up
                         </PrimButton>
                     </form>
@@ -104,6 +108,7 @@ export default class UserSignup extends Component{
         )
     }
 }
+
 const styles={
     paper: {
         marginTop: 8*2,

@@ -1,23 +1,53 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
-import { PrimButton} from './theme';
+import { PrimButton, H2} from './theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {
     TextField,
     Grid,
     Container
 } from "@material-ui/core";
+import axios from "axios";
 
-export default class CompanySignup extends Component{
+export default class UserSignup extends Component{
     constructor(props){
         super(props);
         this.state={
-            companyName : "",
-            companyAddr : "",
-            companyEmail: "",
-            companyPwrd: ""
+            CustomerName : "",
+            CustomerEmail : "",
+            CustomerPassport : "",
         }
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        
     }
+    
+    handleSubmit(e){
+        
+        const data = {
+            type: "Customer",
+            name: this.state.CustomerName,
+            passport: this.state.CustomerPassport,
+            email: this.state.CustomerEmail
+        };
+
+        axios.post("/signup", data).then(res => {
+            console.log("Customer data submitted to secure database!");
+
+        }).catch(err => {
+            console.log(err);
+        });
+
+        e.preventDefault();     
+
+    }
+
+    handleChange(e){
+        this.setState({[e.target.name]: e.target.value})
+    
+    }
+
     render(){
         return(
             <Container component="main" maxWidth="xs" >
@@ -26,45 +56,40 @@ export default class CompanySignup extends Component{
                     <form style={styles.formLayout}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                            <label>Company Name:</label>
+                            <label>Passport Number:</label>
                             <TextField
+                                onChange = {this.handleChange}
                                 type="text"
-                                name="companyName"
-                                id="companyName"/>
+                                name="CustomerPassport"
+                                id="passport"/>
                             </Grid>
                         </Grid>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                                <label>Company Address:</label>
+                                <label>Customer Full Name:</label>
                                 <TextField
+                                    onChange = {this.handleChange}
                                     type="text"
-                                    name="companyAddr"
-                                    id="companyAddr"/>
+                                    name="CustomerName"
+                                    id="name"/>
                             </Grid>
                         </Grid>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
-                                <label>Company Email:</label>
+                                <label>Email Address:</label>
                                 <TextField
+                                    onChange = {this.handleChange}
                                     type="email"
-                                    name="companyEmail"
-                                    id="companyEmail"/>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Password:</label>
-                                <TextField
-                                    type="password"
-                                    name="password"
-                                    id="password"/>
+                                    name="CustomerEmail"
+                                    id="email"/>
                             </Grid>
                         </Grid>
                         <PrimButton
                             type="submit"
                             fullWidth
                             variant="contained"
-                            style={styles.submit}>
+                            style={styles.submit}
+                            onClick = {this.handleSubmit}>
                             Sign Up
                         </PrimButton>
                     </form>
@@ -73,7 +98,6 @@ export default class CompanySignup extends Component{
         )
     }
 }
-
 const styles={
     paper: {
         marginTop: 8*2,
