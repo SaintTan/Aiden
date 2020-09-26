@@ -24,7 +24,7 @@ export default class EmpPage extends Component{
         this.state={
             userID: localStorage.getItem("userID"),
             dialogIsOpen: false,
-            dialogIsOpenI: true,
+            dialogIsOpenI: false,
             issue: "",
             searchID: "",
             search: "",
@@ -32,6 +32,7 @@ export default class EmpPage extends Component{
             displaySearch: false
         }
         this.handleDialogClose = this.handleDialogClose.bind(this)
+        this.handleDialogCloseI = this.handleDialogCloseI.bind(this)
         this.handleDialogOpen = this.handleDialogOpen.bind(this)
         this.handleListItemClick = this.handleListItemClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
