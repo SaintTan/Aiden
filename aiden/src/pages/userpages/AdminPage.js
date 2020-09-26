@@ -104,8 +104,8 @@ export default class AdminPage extends Component{
         console.error(err)
     }
 
-    handleListItemClick(e, key){
-        this.setState({issue: key});
+    handleListItemClick(e){
+        this.setState({issue: "STI"});
         this.handleDialogClose(e);
     }
 
@@ -151,12 +151,12 @@ export default class AdminPage extends Component{
                 </PrimButton>
                 <Dialog onClose={this.handleDialogClose} open={this.state.dialogIsOpen}>
                     <List>
-                        <ListItem button onClick={()=>this.handleListItemClick("STI")}>
+                        <ListItem button onClick={()=>this.handleListItemClick()}>
                             STI
                         </ListItem>
                     </List>
                     <List>
-                        <ListItem button onClick={()=>this.handleListItemClick("AIDS")}>
+                        <ListItem button onClick={()=>this.handleListItemClick()}>
                             AIDS
                         </ListItem>
                     </List>

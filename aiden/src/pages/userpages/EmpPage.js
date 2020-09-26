@@ -52,6 +52,11 @@ export default class EmpPage extends Component{
         this.setState({dialogIsOpen: true});
     }
 
+    handleListItemClick(e){
+        this.setState({issue: "STI"});
+        this.handleDialogClose(e);
+    }
+
     handleChange(e){
         this.setState({[e.target.name]: e.target.value})
     }
@@ -84,11 +89,6 @@ export default class EmpPage extends Component{
 
     }
 
-    handleListItemClick(e, key){
-        this.setState({issue: key});
-        this.handleDialogClose(e);
-    }
-
     render(){
         return(
             <Container component="main" maxWidth="xs" style={styles.paper}>
@@ -102,12 +102,10 @@ export default class EmpPage extends Component{
                 </PrimButton>
                 <Dialog onClose={this.handleDialogClose} open={this.state.dialogIsOpen}>
                     <List>
-                        <ListItem button onClick={this.handleListItemClick("STI")}>
+                        <ListItem button onClick={this.handleListItemClick} key="STI">
                             STI
                         </ListItem>
-                    </List>
-                    <List>
-                        <ListItem button onClick={this.handleListItemClick("AIDS")}>
+                        <ListItem button onClick={this.handleListItemClick} key="STI">
                             AIDS
                         </ListItem>
                     </List>
