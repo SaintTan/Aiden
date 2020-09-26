@@ -35,7 +35,6 @@ export default class AdminPage extends Component{
             issue: "",
             selectedDate: new Date('2014-08-18T21:11:54'),
             displaySearch: false,
-            reloadPage:false
         }
         this.handleDialogClose = this.handleDialogClose.bind(this);
         this.handleDialogCloseI =  this.handleDialogCloseI.bind(this);
@@ -47,9 +46,6 @@ export default class AdminPage extends Component{
         this.handleSearch = this.handleSearch.bind(this);
         this.handleReportSubmit = this.handleReportSubmit.bind(this);
         this.setDate = this.setDate.bind(this);
-        if(!this.state.reloadPage){
-            this.setState({reloadPage:true});
-        }
     }
 
     handleDialogClose(e){
@@ -92,7 +88,16 @@ export default class AdminPage extends Component{
 
     handleSearch(e){
         //search this.state.searchID
-        this.setState({result: "OK"})
+        if(this.state.searchID==="5"){
+            this.setState({result: "Infected"})
+        }   
+        else if(this.state.searchID==="6"){
+            this.setState({result: "Flagged"})
+        }
+        else{
+            this.setState({result: "OK"})
+        }
+        
         this.setState({displaySearch:true})
     }
 
