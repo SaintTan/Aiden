@@ -6,6 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Dialog from "@material-ui/core/Dialog";
 import { PrimButton} from '../../component/theme';
+import axios from 'axios';
 import {
     Grid,
     Box,
@@ -64,10 +65,36 @@ export default class AdminPage extends Component{
 
     handleReportSubmit(e){
         this.handleDialogCloseI(e);
+
+        const data = {
+
+        };
+
+        axios.post("/user", data).then(res => {
+
+        }).catch(err =>{
+            console.log(err);
+        });
+
+
+        e.preventDefault();
+
     }
 
     handleScan = data => {
+
+        console.log(data);
         if (data) {
+
+            const interactionObj = {
+                workerID: this.state.userID,
+                customerID: data
+            }
+            axios.post("/user", interactionObj).then(res =>{
+                console.log(res.data);
+            }).catch(err =>{
+                console.log(err);
+            });
         }
     }
 

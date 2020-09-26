@@ -49,7 +49,7 @@ export default class LoginPage extends Component{
                 }
                 else if (res.data["type"] === "customer"){
                     localStorage.setItem("usertype", "user");
-                    localStorage.setItem("usertype", res.data["id"]);
+                    localStorage.setItem("userID", res.data["id"]);
                 }
                 localStorage.setItem("loggedIn", true);
                 this.setState({redirect: "user"})

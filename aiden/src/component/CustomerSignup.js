@@ -13,7 +13,6 @@ export default class UserSignup extends Component{
     constructor(props){
         super(props);
         this.state={
-            CustomerName : "",
             CustomerEmail : "",
             CustomerPassport : "",
             CustomerPassword: ""
@@ -26,7 +25,6 @@ export default class UserSignup extends Component{
         
         const data = {
             type: "Customer",
-            name: this.state.CustomerName,
             passport: this.state.CustomerPassport,
             email: this.state.CustomerEmail,
             password: this.state.CustomerPassword
@@ -72,34 +70,24 @@ export default class UserSignup extends Component{
                             </Grid>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
-                                    <label style={styles.textField}>Customer Full Name:</label>
-                                    <TextField
-                                        onChange = {this.handleChange}
-                                        type="text"
-                                        name="CustomerName"
-                                        style={styles.textField}
-                                        id="name"/>
-                                </Grid>
-                            </Grid>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                <label>Password:</label>
-                                <TextField
-                                    onChange = {this.handleChange}
-                                    type="text"
-                                    name="CustomerPassword"
-                                    id="password"/>
-                                </Grid>
-                            </Grid>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                    <label>Email Address:</label>
+                                    <label style={styles.textField}>Email Address:</label>
                                     <TextField
                                         onChange = {this.handleChange}
                                         type="email"
                                         name="CustomerEmail"
                                         style={styles.textField}
                                         id="email"/>
+                                </Grid>
+                            </Grid>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                <label style={styles.textField}>Password:</label>
+                                <TextField
+                                    onChange = {this.handleChange}
+                                    type="text"
+                                    name="CustomerPassword"
+                                    style={styles.textField}
+                                    id="password"/>
                                 </Grid>
                             </Grid>
                             <PrimButton
