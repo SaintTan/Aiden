@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import {Redirect} from "react-router-dom"
+import {Redirect} from "react-router-dom";
+import { PrimButton, H2, TextLink } from '../component/theme';
 import {
     TextField,
-    Grid
+    Grid,
+    Container,
+    CssBaseline
 } from "@material-ui/core";
 
 export default class LoginPage extends Component{
@@ -24,7 +27,9 @@ export default class LoginPage extends Component{
     }
 
     handleSubmit(e){
-        
+        //ask and confirm user type
+        localStorage.setItem("usertype", "admin");
+        this.setState({redirect: "user"})
     }
 
     handleSignup(e){
@@ -37,44 +42,59 @@ export default class LoginPage extends Component{
         }
         else{
             return(
-                <div style={styles.paper}>
-                    <form onSubmit = {this.handleSubmit} style={styles.formLayout}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <TextField 
-                                    name="company" 
-                                    type="text" 
-                                    value={this.state.company} 
-                                    id="company"
-                                    label="company"
+                <Container component="main" maxWidth="xs" >
+                    <CssBaseline />
+                    <div style={styles.paper}>
+                        <form onSubmit = {this.handleSubmit} style={styles.formLayout}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <TextField 
+                                        name="company" 
+                                        type="text" 
+                                        value={this.state.company} 
+                                        id="company"
+                                        label="company"
+                                        onChange={this.handleChange}/>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField 
+                                        name="email" 
+                                        type="email" 
+                                        value={this.state.email} 
+                                        id="email"
+                                        label="email"
+                                        onChange={this.handleChange}/>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                    name="password" 
+                                    type="password" 
+                                    value={this.state.password}
+                                    id="password" 
+                                    label="password"  
                                     onChange={this.handleChange}/>
+                                </Grid>
+                                <PrimButton
+                                    type="submit"
+                                    fullWidth
+                                    variant="contained"
+                                    style={styles.submit}>
+                                    Login
+                                </PrimButton>
+
+                                <Grid container justify="flex-end">
+                                    <Grid item>
+                                        <TextLink href="/signup">
+                                            Don't have an account? Sign up Here!
+                                        </TextLink>
+                                    </Grid>
+                                </Grid>
+                                
+                                
                             </Grid>
-                            <Grid item xs={12}>
-                                <TextField 
-                                    name="email" 
-                                    type="email" 
-                                    value={this.state.email} 
-                                    id="email"
-                                    label="email"
-                                    onChange={this.handleChange}/>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                name="password" 
-                                type="password" 
-                                value={this.state.password}
-                                id="password" 
-                                label="password"  
-                                onChange={this.handleChange}/>
-                            </Grid>
-                            
-                            <div>
-                                <button style={styles.button} name="" onClick={this.handleSignup}>SignUp</button>
-                                <button style={styles.button} name="signup" onClick={this.handleSignup}>SignUp</button>
-                            </div>
-                        </Grid>
-                    </form>
-                </div>
+                        </form>
+                    </div>
+                </Container>
             );
         }
     }
@@ -93,7 +113,8 @@ const styles={
     },
     formLayout:{
         width: '100%',
-      marginTop: 8*3,
+        alignItems: "center",
+        marginTop: 8*3,
     },
     laybelStyle:{
         display:"flex",
@@ -102,22 +123,7 @@ const styles={
     textField: {
         margin: "4px 0px 4px",
     },
-    button:{
-        background: 'transparent',
-        border: '2px solid',
-        borderColor:'#99C015',
-        borderRadius: 3,
-        color: '#99C015',
-        height: 48,
-        padding: '0 30px',
-        fontFamily: ['avenir','roboto'],
-        margin: "16px 32px 16px 32px",
-        letterSpacing: 3,
-        fontSize:18,
-        fontWeight: 'bold',
-        '&:hover': {
-            background: "#638709",
-            color: '#fff',
-        }
+    submit:{
+
     }
 }

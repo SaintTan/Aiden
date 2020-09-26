@@ -6,7 +6,7 @@ export default class userPage extends Component{
     constructor(props){
         super(props)
         this.state={
-            userType: ""
+            userType: localStorage.getItem("usertype")
         }
     }
     render(){
