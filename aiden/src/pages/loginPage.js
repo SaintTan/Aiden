@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
-import { PrimButton, H2, TextLink } from '../component/theme';
+import { PrimButton, TextLink } from '../component/theme';
 import {
     TextField,
     Grid,
@@ -29,8 +29,9 @@ export default class LoginPage extends Component{
     handleSubmit(e){
         //ask and confirm user type
         localStorage.setItem("usertype", "user");
-        localStorage.setItem("userID", "101")
-        this.setState({redirect: "user"})
+        localStorage.setItem("userID", "101");
+        localStorage.setItem("loggedIn", true);
+        this.setState({redirect: "user"});
     }
 
     handleSignup(e){
@@ -90,8 +91,6 @@ export default class LoginPage extends Component{
                                         </TextLink>
                                     </Grid>
                                 </Grid>
-                                
-                                
                             </Grid>
                         </form>
                     </div>

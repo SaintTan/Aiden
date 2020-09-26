@@ -10,23 +10,58 @@ import {
 export default class Header extends Component{
     constructor(props){
         super(props)
-        this.state={}
+        this.state={
+            currentStatus:false
+        }
+        this.handleOnClick = this.handleOnClick.bind(this);
     }
+    handleOnClick(e){
+        localStorage.setItem("loggedIn", false)
+        this.setState({currentStatus:false});
+    }
+
+    UNSAFE_componentWillMount() {
+        if((localStorage.getItem("loggedIn") === "true") && !this.state.currentStatus) {
+          this.setState({currentStatus: true});
+        }
+        if((localStorage.getItem("loggedIn") === "false") && this.state.currentStatus) {
+          this.setState({currentStatus: false});
+        }
+    }
+    
     render(){
-        return(
-            <div style={styles.root}>
-                <AppBar style={styles.navBar}>
-                    <Toolbar>
-                        <Link style={styles.logo} href="/">
-                            Aiden.
-                        </Link>
-                        <Button style={styles.menuButton} href="/login">Login</Button>
-                        <Button style={styles.menuButton} href="/signup">Sign up</Button>
-                    </Toolbar>
-                </AppBar>
-                <Box style={{height: '8vh'}}/>
-            </div>
-        )
+        if(this.state.currentStatus){
+            return(
+                <div style={styles.root}>
+                    <AppBar style={styles.navBar}>
+                        <Toolbar>
+                            <Link style={styles.logo} href="/">
+                                Aiden.
+                            </Link>
+                            <Button style={styles.menuButton} href="/" onClick={this.handleOnClick}>Logout</Button>
+                        </Toolbar>
+                    </AppBar>
+                    <Box style={{height: '8vh'}}/>
+                </div>
+            )
+        }
+        else{
+            return(
+                <div style={styles.root}>
+                    <AppBar style={styles.navBar}>
+                        <Toolbar>
+                            <Link style={styles.logo} href="/">
+                                Aiden.
+                            </Link>
+                            <Button style={styles.menuButton} href="/login">Login</Button>
+                            <Button style={styles.menuButton} href="/signup">Sign up</Button>
+                        </Toolbar>
+                    </AppBar>
+                    <Box style={{height: '8vh'}}/>
+                </div>
+            )
+        }
+        
     }
 }
 

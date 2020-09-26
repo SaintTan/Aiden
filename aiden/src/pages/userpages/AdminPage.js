@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {Redirect} from "react-router-dom";
 import QrReader from 'react-qr-reader'
 import {
     Container
@@ -17,6 +16,7 @@ export default class AdminPage extends Component{
         }
         this.handleScan = this.handleScan.bind(this);
         this.handleError = this.handleError.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleScan = data => {
         if (data) {

@@ -1,20 +1,7 @@
-import { styled, createMuiTheme, makeStyles, withStyles } from '@material-ui/core/styles';
+import { styled, createMuiTheme, makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import {
-    Avatar,
-    CssBaseline,
-    TextField,
-    FormControlLabel,
-    Checkbox,
-    Grid,
-    Box,
-    Container,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,} from '@material-ui/core';
 
 // ***************************CREATE THEME**************************** //
 
@@ -23,16 +10,16 @@ export const theme = createMuiTheme({
     palette: {
         primary:
         {
-            main: '#99C015',
+            main: '#132E52',
             light: '#E8F2D8',
-            dark: '#638709',
+            dark: '#132E52',
         },
         secondary:
         {
             main: '#FBDF3D',
         },
         // textPrimary: '#002E18',
-        // textSecondary: '#638709',
+        // textSecondary: '#132E52',
 
     },
     typography: {
@@ -93,9 +80,9 @@ export const useStyles = makeStyles((theme) => ({
 export const PrimButton = styled(Button)({
     background: 'transparent',
     border: '2px solid',
-    borderColor:'#99C015',
+    borderColor:'#132E52',
     borderRadius: 3,
-    color: '#99C015',
+    color: '#132E52',
     height: 48,
     padding: '0 30px',
     fontFamily: [
@@ -107,13 +94,13 @@ export const PrimButton = styled(Button)({
     fontSize:18,
     fontWeight: 'bold',
     '&:hover': {
-        background: "#638709",
+        background: "#132E52",
         color: '#fff',
     },
 });
 
 export const SecButton = styled(Button)({
-    background: '#99C015',
+    background: '#132E52',
     border: 0,
     borderRadius: 5,
     color: '#fff',
@@ -126,7 +113,7 @@ export const SecButton = styled(Button)({
     ].join(','),
     margin: theme.spacing(2,2,2,2),
     '&:hover': {
-        background: "#638709",
+        background: "#132E52",
         color: "#fff",
     },
 });
@@ -163,7 +150,7 @@ export const FormLabel = styled(Typography)({
 })
 
 export const TextLink = styled(Link)({
-    color: "#638709",
+    color: "#132E52",
     fontFamily: [
         'avenir',
         'roboto',

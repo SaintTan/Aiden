@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
-import { PrimButton, H2} from './theme';
+import { PrimButton} from './theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {
     TextField,
@@ -21,30 +21,30 @@ export default class UserSignup extends Component{
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        
     }
     
     handleSubmit(e){
-        
         const userData = this.state;
         axios.post("/signup", {userData}).then(res => {
             console.log("Data submitted to db!");
             console.log(res.data);
+            this.setState({redirect:"login"});
 
         }).catch(err => {
             console.log(err);
         });
-
-        e.preventDefault();     
-
+        
+        e.preventDefault();
     }
 
     handleChange(e){
-        this.setState({[e.target.name]: e.target.value})
-    
+        this.setState({[e.target.name]: e.target.value});
     }
 
     render(){
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
         return(
             <Container component="main" maxWidth="xs" >
                 <CssBaseline />

@@ -17,60 +17,71 @@ export default class CompanySignup extends Component{
             companyEmail: "",
             companyPwrd: ""
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
+    handleSubmit(e){
+        this.setState({redirect: "login"});
+    }
+
     render(){
-        return(
-            <Container component="main" maxWidth="xs" >
-                <CssBaseline />
-                <div style={styles.paper}>
-                    <form style={styles.formLayout}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                            <label>Company Name:</label>
-                            <TextField
-                                type="text"
-                                name="companyName"
-                                id="companyName"/>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Company Address:</label>
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
+        else{
+            return(
+                <Container component="main" maxWidth="xs" >
+                    <CssBaseline />
+                    <div style={styles.paper}>
+                        <form style={styles.formLayout}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                <label>Company Name:</label>
                                 <TextField
                                     type="text"
-                                    name="companyAddr"
-                                    id="companyAddr"/>
+                                    name="companyName"
+                                    id="companyName"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Company Email:</label>
-                                <TextField
-                                    type="email"
-                                    name="companyEmail"
-                                    id="companyEmail"/>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <label>Company Address:</label>
+                                    <TextField
+                                        type="text"
+                                        name="companyAddr"
+                                        id="companyAddr"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <label>Password:</label>
-                                <TextField
-                                    type="password"
-                                    name="password"
-                                    id="password"/>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <label>Company Email:</label>
+                                    <TextField
+                                        type="email"
+                                        name="companyEmail"
+                                        id="companyEmail"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                        <PrimButton
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            style={styles.submit}>
-                            Sign Up
-                        </PrimButton>
-                    </form>
-                </div>
-            </Container>
-        )
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={6}>
+                                    <label>Password:</label>
+                                    <TextField
+                                        type="password"
+                                        name="password"
+                                        id="password"/>
+                                </Grid>
+                            </Grid>
+                            <PrimButton
+                                type="submit"
+                                fullWidth
+                                variant="contained"
+                                onClick={this.handleSubmit}
+                                style={styles.submit}>
+                                Sign Up
+                            </PrimButton>
+                        </form>
+                    </div>
+                </Container>
+            )
+        }
     }
 }
 

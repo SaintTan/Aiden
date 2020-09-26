@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import {H2} from '../../component/theme';
 import QRCode from "react-qr-code";
-import {Redirect} from "react-router-dom";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Dialog from "@material-ui/core/Dialog";
 import { PrimButton} from '../../component/theme';
 import {
     Box,
-    Container
+    Container,
+    TextField
 } from "@material-ui/core";
 
 export default class EmpPage extends Component{
@@ -17,11 +17,16 @@ export default class EmpPage extends Component{
         this.state={
             userID: localStorage.getItem("userID"),
             dialogIsOpen: false,
-            issue: ""
+            issue: "",
+            searchID: "",
+            search: "",
+            displaySearch: false
         }
         this.handleDialogClose = this.handleDialogClose.bind(this)
         this.handleDialogOpen = this.handleDialogOpen.bind(this)
         this.handleListItemClick = this.handleListItemClick.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSearch = this.handleSearch.bind(this)
     }
     handleDialogClose(e){
         this.setState({dialogIsOpen: false});
@@ -34,6 +39,16 @@ export default class EmpPage extends Component{
     handleListItemClick(e){
         this.setState({issue: e.target.key});
         this.handleDialogClose(e);
+    }
+
+    handleChange(e){
+        this.setState({[e.target.name]: e.target.value})
+    }
+
+    handleSearch(e){
+        //search this.state.searchID
+        this.setState({result: "OK"})
+        this.setState({displaySearch:true})
     }
 
     render(){
@@ -54,6 +69,14 @@ export default class EmpPage extends Component{
                         </ListItem>
                     </List>
                 </Dialog>
+                <TextField name="searchID" onChange={this.handleChange}/>
+                <PrimButton onClick={this.handleSearch}>Search ID</PrimButton>
+                <div>
+                    {((searchVal, result)=>{
+                        if(!searchVal) return
+                        else return <Box>{result}</Box>
+                    })(this.state.displaySearch, this.state.result)}
+                </div>
             </Container>
         )
     }
