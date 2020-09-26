@@ -27,7 +27,9 @@ export default class LoginPage extends Component{
     }
 
     handleSubmit(e){
-        
+        //ask and confirm user type
+        localStorage.setItem("usertype", "admin");
+        this.setState({redirect: "user"})
     }
 
     handleSignup(e){
