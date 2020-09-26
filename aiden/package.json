@@ -1,5 +1,5 @@
 {
-  "name": "Aiden",
+  "name": "aiden",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/SaintTan/Aiden.git",
@@ -40,6 +40,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-api": "cd ../aiden_flask_backend && flask run --no-debugger",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -58,5 +59,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

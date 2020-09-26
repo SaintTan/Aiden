@@ -13,14 +13,16 @@ export default class SignUpPage extends Component{
     constructor(props){
         super(props);
         this.state={
-            value : "Company"
+            value : ""
         }
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleRadioChange = this.handleRadioChange.bind(this);
     }
 
     handleSubmit(e){
         e.preventDefault();
+
     };
 
     handleRadioChange(e){
@@ -46,7 +48,7 @@ export default class SignUpPage extends Component{
                             style={styles.formControl}
                             value="User"
                             control={<Radio color="primary" />}
-                            label="user"
+                            label="User"
                             labelPlacement="end"
                             />
                         </RadioGroup>
