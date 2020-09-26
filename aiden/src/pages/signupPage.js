@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import CompanySignup from "../component/CompanySignup";
-import UserSignup from "../component/UserSignup";
+import WorkerSignup from "../component/WorkerSignup";
+import CustomerSignup from "../component/CustomerSignup";
 import {
     FormControl,
     FormLabel,
@@ -13,7 +13,7 @@ export default class SignUpPage extends Component{
     constructor(props){
         super(props);
         this.state={
-            value : ""
+            value : "Customer"
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,16 +39,16 @@ export default class SignUpPage extends Component{
                         <RadioGroup row name="userType" onChange={this.handleRadioChange} style={styles.container}>
                             <FormControlLabel
                             style={styles.formControl}
-                            value="Company"
+                            value="Worker"
                             control={<Radio color="primary" />}
-                            label="Company"
+                            label="Worker"
                             labelPlacement="end"
                             />
                             <FormControlLabel
                             style={styles.formControl}
-                            value="User"
+                            value="Customer"
                             control={<Radio color="primary" />}
-                            label="User"
+                            label="Customer"
                             labelPlacement="end"
                             />
                         </RadioGroup>
@@ -56,8 +56,8 @@ export default class SignUpPage extends Component{
                 </form>
                 <div>
                     {((value) => {
-                        if (value === "Company") return <CompanySignup/>
-                        else return <UserSignup/>
+                        if (value === "Worker") return <WorkerSignup/>
+                        else return <CustomerSignup/>
                     })(this.state.value)}
                 </div>
             </div>
@@ -73,7 +73,7 @@ const styles={
     },
     form: {
       width: '100%',
-      marginTop: 8*3
+      marginTop: 8*15
     },
     formLabel: {
     marginBottom: 8,

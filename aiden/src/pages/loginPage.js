@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import {Redirect} from "react-router-dom";
-import { PrimButton, TextLink } from '../component/theme';
+import { UserOutlined } from '@ant-design/icons';
+import { PrimButton, TextLink, H2 } from '../component/theme';
+import axios from 'axios';
 import {
     TextField,
     Grid,
     Container,
-    CssBaseline
+    CssBaseline,
+    Avatar
 } from "@material-ui/core";
 
 export default class LoginPage extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            company: '',
             email: '',
             password: '',
+            err_msg: ''
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -27,11 +30,36 @@ export default class LoginPage extends Component{
     }
 
     handleSubmit(e){
+
         //ask and confirm user type
-        localStorage.setItem("usertype", "admin");
-        localStorage.setItem("userID", "101");
-        localStorage.setItem("loggedIn", true);
-        this.setState({redirect: "user"});
+        const data = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        axios.post("/login", data).then(res => {
+            console.log(res.data);
+            if (res.data["status"] === "declined"){
+                this.setState({err_msg: "Wrong password or email!"});
+            }
+            
+            else if (res.data["status"] === "verified"){
+                if (res.data["type"] === "worker"){
+                    localStorage.setItem("usertype", "admin");
+                    localStorage.setItem("userID", res.data["id"]);
+                }
+                else if (res.data["type"] === "customer"){
+                    localStorage.setItem("usertype", "user");
+                    localStorage.setItem("usertype", res.data["id"]);
+                }
+                localStorage.setItem("loggedIn", true);
+                this.setState({redirect: "user"})
+            }
+
+        }).catch(err => {
+            console.log(err);
+        });
+
+        e.preventDefault();
     }
 
     handleSignup(e){
@@ -44,20 +72,18 @@ export default class LoginPage extends Component{
         }
         else{
             return(
-                <Container component="main" maxWidth="xs" >
+                <Container component="main" maxWidth="xs" style={styles.container}>
+                    <Avatar style={styles.avatar}>
+                        <UserOutlined />
+                    </Avatar>
+                    <H2 component="h1" variant="h5">
+                        Sign in
+                    </H2>
                     <CssBaseline />
                     <div style={styles.paper}>
+                        <div style={styles.message}>{this.state.err_msg}</div>
                         <form onSubmit = {this.handleSubmit} style={styles.formLayout}>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} sm={6}>
-                                    <TextField 
-                                        name="company" 
-                                        type="text" 
-                                        value={this.state.company} 
-                                        id="company"
-                                        label="company"
-                                        onChange={this.handleChange}/>
-                                </Grid>
                                 <Grid item xs={12}>
                                     <TextField 
                                         name="email" 
@@ -65,6 +91,7 @@ export default class LoginPage extends Component{
                                         value={this.state.email} 
                                         id="email"
                                         label="email"
+                                        style={styles.textField}
                                         onChange={this.handleChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
@@ -74,6 +101,7 @@ export default class LoginPage extends Component{
                                     value={this.state.password}
                                     id="password" 
                                     label="password"  
+                                    style={styles.textField}
                                     onChange={this.handleChange}/>
                                 </Grid>
                                 <PrimButton
@@ -107,12 +135,20 @@ const styles={
         flexDirection: 'column',
         alignItems: 'center',
     },
+    container:{
+        marginTop: 8*15,
+        display:'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width:"100%"
+    },
     avatar: {
         marginBottom: 8,
         backgroundColor: '#99C015',
     },
     formLayout:{
         width: '100%',
+        flexDirectop:"column",
         alignItems: "center",
         marginTop: 8*3,
     },
@@ -121,7 +157,12 @@ const styles={
         marginTop: 10
     },
     textField: {
-        margin: "4px 0px 4px",
+        marginLeft: "25%",
+        marginRight: "25%"
     },
-    submit:{}
+    submit:{},
+    message:{
+        color: "red",
+        fontSize: 15
+    }
 }
