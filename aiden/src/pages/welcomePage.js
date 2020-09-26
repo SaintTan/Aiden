@@ -9,23 +9,26 @@ export default class WelcomePage extends Component{
     }
     render(){
         return(
-            <dev style={styles.pageLayout}>
-                <label style={styles.pageLayout}> Aiden.</label>
-                <label style={styles.pageLayout}> Medical Safety</label>
+            <dev style={styles.pageStyle}>
+                <label> Aiden.</label>
+                <label> Medical Safety</label>
             </dev>
         )
     }
 }
 
 const styles={
-    pageLayout:{
-        display:"flex",
-        flexDirection: "column",
-        flexWrap: "wrap",
-        marginLeft: "auto",
-        marginRight: "auto",
-    },
-    textCenter:{
-
+    pageStyle:{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
+        textAlign: "center",
+        width: window.innerWidth,
+        height: window.innerHeight,
+        overflow: "hidden",
+        color: "Grey",
+        fontFamily: "avenir",
+        fontSize: "3em"
     }
+ 
 }
