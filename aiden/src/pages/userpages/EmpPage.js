@@ -70,20 +70,21 @@ export default class EmpPage extends Component{
     }
 
     handleReportSubmit(e){
-        this.handleDialogCloseI(e);
 
         const data = {
-
+            type: "RiskNotify",
+            workerID: this.state.userID,
+            issue: this.state.issue
         };
 
         axios.post("/user", data).then(res => {
-
+            console.log(res.data);
         }).catch(err =>{
             console.log(err);
         });
 
-
         e.preventDefault();
+        this.handleDialogCloseI(e);
 
     }
 
