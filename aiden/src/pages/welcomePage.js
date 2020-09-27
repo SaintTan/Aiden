@@ -31,7 +31,7 @@ const styles={
         width: "100%",
         height: window.innerHeight,
         overflow: "hidden",
-        color: "Grey",
+        color: "#FFFFFF",
         fontFamily: "avenir",
         fontSize: "3em",
         backgroundPosition: "center center",
@@ -43,7 +43,7 @@ const styles={
         justifyContent: "space-around",
         textAlign: "center",
         overflow: "hidden",
-        backgroundImage: "url('/background.jpg')",
+        backgroundImage: "url('/background1.jpg')",
         backgroundSize: "100%",
         color: "white"
     }
