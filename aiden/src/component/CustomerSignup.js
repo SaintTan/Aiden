@@ -90,17 +90,6 @@ export default class UserSignup extends Component{
                                     id="password"/>
                                 </Grid>
                             </Grid>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12}>
-                                    <label style={styles.textField}>Email Address:</label>
-                                    <TextField
-                                        onChange = {this.handleChange}
-                                        type="email"
-                                        name="CustomerEmail"
-                                        style={styles.textField}
-                                        id="email"/>
-                                </Grid>
-                            </Grid>
                             <PrimButton
                                 type="submit"
                                 fullWidth
